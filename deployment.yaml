@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-k8s-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-k8s-app
+  template:
+    metadata:
+      labels:
+        app: node-k8s-app
+    spec:
+      containers:
+        - name: node-k8s-container
+          image: <dockerhub-username>/node-k8s-app:latest
+          ports:
+            - containerPort: 8080
